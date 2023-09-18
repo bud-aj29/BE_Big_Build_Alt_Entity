@@ -1,0 +1,83 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minecraft:wolf",
+      "materials": {
+        "ghost_blocks": "entity_alphablend"
+      },
+      "textures": {
+        "ghost_blocks_0": "textures/entity/ghost_blocks_0",
+        "ghost_blocks_1": "textures/entity/ghost_blocks_1",
+        "ghost_blocks_2": "textures/entity/ghost_blocks_2",
+        "ghost_blocks_3": "textures/entity/ghost_blocks_3",
+        "ghost_blocks_4": "textures/entity/ghost_blocks_4",
+        "ghost_blocks_5": "textures/entity/ghost_blocks_5",
+        "ghost_blocks_6": "textures/entity/ghost_blocks_6",
+        "ghost_blocks_7": "textures/entity/ghost_blocks_7",
+        "ghost_blocks_8": "textures/entity/ghost_blocks_8",
+        "ghost_blocks_9": "textures/entity/ghost_blocks_9",
+        "ghost_blocks_10": "textures/entity/ghost_blocks_10",
+        "ghost_blocks_11": "textures/entity/ghost_blocks_11"
+      },
+      "geometry": {
+        "ghost_blocks_0": "geometry.armor_stand.ghost_blocks_0",
+        "ghost_blocks_1": "geometry.armor_stand.ghost_blocks_1",
+        "ghost_blocks_2": "geometry.armor_stand.ghost_blocks_2",
+        "ghost_blocks_3": "geometry.armor_stand.ghost_blocks_3",
+        "ghost_blocks_4": "geometry.armor_stand.ghost_blocks_4",
+        "ghost_blocks_5": "geometry.armor_stand.ghost_blocks_5",
+        "ghost_blocks_6": "geometry.armor_stand.ghost_blocks_6",
+        "ghost_blocks_7": "geometry.armor_stand.ghost_blocks_7",
+        "ghost_blocks_8": "geometry.armor_stand.ghost_blocks_8",
+        "ghost_blocks_9": "geometry.armor_stand.ghost_blocks_9",
+        "ghost_blocks_10": "geometry.armor_stand.ghost_blocks_10",
+        "ghost_blocks_11": "geometry.armor_stand.ghost_blocks_11"
+      },
+      "scripts": {
+        "initialize": [
+          "variable.armor_stand.pose_index = 0;"
+        ],
+        "pre_animation": [
+          "variable.body_shake_angle = 0.05 * query.frame_alpha + query.shake_angle;", //vanilla
+          "variable.body_roll_progress = Math.clamp((variable.body_shake_angle - 0.16) / 1.8, 0, 1);", //vanilla
+          "variable.body_rot_z = Math.sin(variable.body_roll_progress * 180) * Math.sin(variable.body_roll_progress * 1980) * 27;", //vanilla
+          "variable.upper_body_roll_progress = Math.clamp((variable.body_shake_angle - 0.08) / 1.8, 0, 1);", //vanilla
+          "variable.upper_body_rot_z = (Math.sin(variable.upper_body_roll_progress * 180) * Math.sin(variable.upper_body_roll_progress * 1980) * 27) - variable.body_rot_z;", //vanilla
+          "variable.tail_roll_progress = Math.clamp((variable.body_shake_angle - 0.2) / 1.8, 0, 1);", //vanilla
+          "variable.tail_rot_z = (Math.sin(variable.tail_roll_progress * 180) * Math.sin(variable.tail_roll_progress * 1980) * 27) - variable.body_rot_z;", //vanilla
+          "variable.head_roll_progress = Math.clamp(variable.body_shake_angle / 1.8, 0, 1);", //vanilla
+          "variable.head_rot_z = (Math.sin(variable.head_roll_progress * 180) * Math.sin(variable.head_roll_progress * 1980) * 27) - variable.body_rot_z;", //vanilla
+	  
+	  "variable.armor_stand.pose_index = query.get_name == 'layer' ? (variable.armor_stand.pose_index = variable.armor_stand.pose_index + 0.01) : variable.armor_stand.pose_index;"
+        ],
+        "animate": [
+          "wolf_setup.c", //vanilla moved from AC
+          "wolf_look_at.c", //vanilla moved from AC
+          "wolf_baby_scaling.c", //vanilla moved from AC
+          "wolf_head_rot_z.c", //vanilla moved from AC
+          "wolf_tail_default.c", //vanilla moved from AC
+          "wolf_angry.c", //vanilla moved from AC
+          "wolf_sitting.c", //vanilla moved from AC
+          "wolf_shaking.c", //vanilla moved from AC
+          "scale"
+        ]
+      },
+      "animations": {
+        "wolf_setup.c": "controller.animation.wolf.setup", //vanilla moved from AC
+	"wolf_look_at.c": "controller.animation.wolf.look_at", //vanilla moved from AC
+	"wolf_baby_scaling.c": "controller.animation.wolf.baby_scaling", //vanilla moved from AC
+	"wolf_head_rot_z.c": "controller.animation.wolf.head_rot_z", //vanilla moved from AC
+	"wolf_tail_default.c": "controller.animation.wolf.tail_default", //vanilla moved from AC
+	"wolf_angry.c": "controller.animation.wolf.angry", //vanilla moved from AC
+	"wolf_sitting.c": "controller.animation.wolf.sitting", //vanilla moved from AC
+	"wolf_shaking.c": "controller.animation.wolf.shaking", //vanilla moved from AC
+        "scale": "animation.armor_stand.ghost_blocks.scale"
+      },
+      "render_controllers": [
+        "controller.render.wolf", //vanilla
+	"controller.render.armor_stand.ghost_blocks"
+      ]
+    }
+  }
+}

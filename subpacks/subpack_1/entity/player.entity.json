@@ -1,0 +1,82 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minecraft:player",
+      "materials": {
+	"ghost_blocks": "entity_alphablend"
+      },
+      "textures": {	
+        "ghost_blocks_0": "textures/entity/ghost_blocks_0",
+        "ghost_blocks_1": "textures/entity/ghost_blocks_1",
+        "ghost_blocks_2": "textures/entity/ghost_blocks_2",
+        "ghost_blocks_3": "textures/entity/ghost_blocks_3",
+        "ghost_blocks_4": "textures/entity/ghost_blocks_4",
+        "ghost_blocks_5": "textures/entity/ghost_blocks_5",
+        "ghost_blocks_6": "textures/entity/ghost_blocks_6",
+        "ghost_blocks_7": "textures/entity/ghost_blocks_7",
+        "ghost_blocks_8": "textures/entity/ghost_blocks_8",
+        "ghost_blocks_9": "textures/entity/ghost_blocks_9",
+        "ghost_blocks_10": "textures/entity/ghost_blocks_10",
+        "ghost_blocks_11": "textures/entity/ghost_blocks_11"
+      },
+      "geometry": {
+        "ghost_blocks_0": "geometry.armor_stand.ghost_blocks_0",
+        "ghost_blocks_1": "geometry.armor_stand.ghost_blocks_1",
+        "ghost_blocks_2": "geometry.armor_stand.ghost_blocks_2",
+        "ghost_blocks_3": "geometry.armor_stand.ghost_blocks_3",
+        "ghost_blocks_4": "geometry.armor_stand.ghost_blocks_4",
+        "ghost_blocks_5": "geometry.armor_stand.ghost_blocks_5",
+        "ghost_blocks_6": "geometry.armor_stand.ghost_blocks_6",
+        "ghost_blocks_7": "geometry.armor_stand.ghost_blocks_7",
+        "ghost_blocks_8": "geometry.armor_stand.ghost_blocks_8",
+        "ghost_blocks_9": "geometry.armor_stand.ghost_blocks_9",
+        "ghost_blocks_10": "geometry.armor_stand.ghost_blocks_10",
+        "ghost_blocks_11": "geometry.armor_stand.ghost_blocks_11"
+      },
+      "scripts": {
+        "initialize": [
+          "variable.is_holding_right = 0.0;", //vanilla
+          "variable.is_blinking = 0.0;", //vanilla //vanilla
+          "variable.last_blink_time = 0.0;", //vanilla
+          "variable.hand_bob = 0.0;", //vanilla
+	  
+	  "variable.armor_stand.pose_index = 0;"
+        ],
+        "pre_animation": [
+          "variable.helmet_layer_visible = 1.0;", //vanilla
+          "variable.leg_layer_visible = 1.0;", //vanilla
+          "variable.boot_layer_visible = 1.0;", //vanilla
+          "variable.chest_layer_visible = 1.0;", //vanilla
+          "variable.attack_body_rot_y = Math.sin(360*Math.sqrt(variable.attack_time)) * 5.0;", //vanilla
+          "variable.tcos0 = (math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / variable.gliding_speed_value) * 57.3;", //vanilla
+          "variable.first_person_rotation_factor = math.sin((1 - variable.attack_time) * 180.0);", //vanilla
+          "variable.hand_bob = query.life_time < 0.01 ? 0.0 : variable.hand_bob + ((query.is_on_ground && query.is_alive ? math.clamp(math.sqrt(math.pow(query.position_delta(0), 2.0) + math.pow(query.position_delta(2), 2.0)), 0.0, 0.1) : 0.0) - variable.hand_bob) * 0.02;", //vanilla
+          "variable.map_angle = math.clamp(1 - variable.player_x_rotation / 45.1, 0.0, 1.0);", //vanilla
+          "variable.item_use_normalized = query.main_hand_item_use_duration / query.main_hand_item_max_duration;", //vanilla
+	  
+	  "variable.armor_stand.pose_index = (query.get_equipped_item_name(0) == 'arrow' && query.get_equipped_item_name(1) == 'arrow') ? (variable.armor_stand.pose_index = variable.armor_stand.pose_index + 0.01) : variable.armor_stand.pose_index;",
+	  "v.big_show = !variable.map_face_icon && !variable.is_first_person && !query.is_in_ui && !variable.is_paperdoll && query.get_equipped_item_name(1) == 'arrow';"
+        ],
+        "animate": [
+          "root", //vanilla
+	  "block_offset_up",
+	  "scale"
+        ]
+      },
+      "animations": {
+	"scale": "animation.armor_stand.ghost_blocks.scale",
+	"block_offset_up": "animation.block_offset_up"	
+      },
+      "render_controllers": [
+        { "controller.render.player.first_person_spectator": "variable.is_first_person && query.is_spectator" }, //vanilla
+        { "controller.render.player.third_person_spectator": "!variable.is_first_person && !variable.map_face_icon && query.is_spectator" }, //vanilla
+        { "controller.render.player.first_person": "variable.is_first_person && !query.is_spectator" }, //vanilla
+        { "controller.render.player.third_person": "!variable.is_first_person && !variable.map_face_icon && !query.is_spectator" }, //vanilla
+        { "controller.render.player.map": "variable.map_face_icon" }, //vanilla
+	
+        { "controller.render.armor_stand.ghost_blocks": "v.big_show" }
+      ]
+    }
+  }
+}

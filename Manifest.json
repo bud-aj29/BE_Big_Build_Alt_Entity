@@ -1,0 +1,45 @@
+{
+	"format_version": 2,
+	"header": {
+		"description": "Alternate entities for big build packs that were created with RavinMaddHatter's Structura.",
+		"name": "Big_Build_Alt_Entity_v0.0.1",
+		"uuid": "9d377674-05ab-4546-8d59-8882022785b2",
+		"version": [ 0,0,1 ],
+		"min_engine_version": [ 1, 20, 10 ]
+	},
+	"modules": [
+		{
+			"description": "",
+			"type": "resources",
+			"uuid": "9ad0bf5b-710e-4ecd-a510-f71cf62574a6",
+			"version": [0, 0, 1]
+		}
+	],
+	"subpacks": [
+		{
+			"folder_name": "subpack_1",
+			"name": "Player",
+			"memory_tier": 1
+		},
+		{
+			"folder_name": "subpack_2",
+			"name": "Creeper",
+			"memory_tier": 2
+		},
+		{
+			"folder_name": "subpack_3",
+			"name": "Cod",
+			"memory_tier": 3
+		},
+		{
+			"folder_name": "subpack_4",
+			"name": "Parrot",
+			"memory_tier": 4
+		},
+		{
+			"folder_name": "subpack_5",
+			"name": "Wolf",
+			"memory_tier": 5
+		}
+	]
+}

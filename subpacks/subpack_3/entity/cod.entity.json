@@ -1,0 +1,62 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "minecraft:cod",
+      "materials": {
+        "ghost_blocks": "entity_alphablend"
+      },
+      "textures": {
+        "ghost_blocks_0": "textures/entity/ghost_blocks_0",
+        "ghost_blocks_1": "textures/entity/ghost_blocks_1",
+        "ghost_blocks_2": "textures/entity/ghost_blocks_2",
+        "ghost_blocks_3": "textures/entity/ghost_blocks_3",
+        "ghost_blocks_4": "textures/entity/ghost_blocks_4",
+        "ghost_blocks_5": "textures/entity/ghost_blocks_5",
+        "ghost_blocks_6": "textures/entity/ghost_blocks_6",
+        "ghost_blocks_7": "textures/entity/ghost_blocks_7",
+        "ghost_blocks_8": "textures/entity/ghost_blocks_8",
+        "ghost_blocks_9": "textures/entity/ghost_blocks_9",
+        "ghost_blocks_10": "textures/entity/ghost_blocks_10",
+        "ghost_blocks_11": "textures/entity/ghost_blocks_11"
+      },
+      "geometry": {
+        "ghost_blocks_0": "geometry.armor_stand.ghost_blocks_0",
+        "ghost_blocks_1": "geometry.armor_stand.ghost_blocks_1",
+        "ghost_blocks_2": "geometry.armor_stand.ghost_blocks_2",
+        "ghost_blocks_3": "geometry.armor_stand.ghost_blocks_3",
+        "ghost_blocks_4": "geometry.armor_stand.ghost_blocks_4",
+        "ghost_blocks_5": "geometry.armor_stand.ghost_blocks_5",
+        "ghost_blocks_6": "geometry.armor_stand.ghost_blocks_6",
+        "ghost_blocks_7": "geometry.armor_stand.ghost_blocks_7",
+        "ghost_blocks_8": "geometry.armor_stand.ghost_blocks_8",
+        "ghost_blocks_9": "geometry.armor_stand.ghost_blocks_9",
+        "ghost_blocks_10": "geometry.armor_stand.ghost_blocks_10",
+        "ghost_blocks_11": "geometry.armor_stand.ghost_blocks_11"
+      },
+      "scripts": {
+        "initialize": [
+          "variable.armor_stand.pose_index = 0;"
+        ],
+        "pre_animation": [
+          "variable.ZRot = !query.is_in_water ? Math.cos((query.time_stamp + query.frame_alpha) * 14.32) * 90 : 0.0;", //vanilla
+          "variable.AnimationAmountBlend = Math.lerp(variable.AnimationAmountPrev, variable.AnimationAmount, query.frame_alpha);", //vanilla
+	  
+	  "variable.armor_stand.pose_index = query.get_name == 'layer' ? (variable.armor_stand.pose_index = variable.armor_stand.pose_index + 0.01) : variable.armor_stand.pose_index;"
+        ],
+        "animate": [
+          "general", //vanilla moved from AC
+          "scale"
+        ]
+      },
+      "animations": {
+        "general": "controller.animation.fish.general", //vanilla moved from AC
+        "scale": "animation.armor_stand.ghost_blocks.scale"
+      },
+      "render_controllers": [
+        "controller.render.cod", //vanilla
+	"controller.render.armor_stand.ghost_blocks"
+      ]
+    }
+  }
+}
