@@ -1,45 +1,90 @@
 {
 	"format_version": 2,
 	"header": {
-		"description": "Alternate entities for big build packs that were created with RavinMaddHatter's Structura.",
-		"name": "Big_Build_Alt_Entity_v0.0.1",
-		"uuid": "9d377674-05ab-4546-8d59-8882022785b2",
-		"version": [ 0,0,1 ],
+		"description": "Alternate entity for big build packs that were created with RavinMaddHatter's Structura.",
+		"name": "Big_Build_Alt_Entity_v0.0.2",
+		"uuid": "d04d04f7-b363-42ab-8393-f6c6250e7f20",
+		"version": [ 0,0,2 ],
 		"min_engine_version": [ 1, 20, 10 ]
 	},
 	"modules": [
 		{
 			"description": "",
 			"type": "resources",
-			"uuid": "9ad0bf5b-710e-4ecd-a510-f71cf62574a6",
+			"uuid": "b3465bbf-c208-436d-a393-40c383a3c9b6",
 			"version": [0, 0, 1]
 		}
 	],
 	"subpacks": [
 		{
-			"folder_name": "subpack_1",
-			"name": "Player",
-			"memory_tier": 1
+			"folder_name": "subpack_12",
+			"name": "Layer_12",
+			"memory_tier": 12
 		},
 		{
-			"folder_name": "subpack_2",
-			"name": "Creeper",
-			"memory_tier": 2
+			"folder_name": "subpack_11",
+			"name": "Layer_11",
+			"memory_tier": 11
 		},
 		{
-			"folder_name": "subpack_3",
-			"name": "Cod",
-			"memory_tier": 3
+			"folder_name": "subpack_10",
+			"name": "Layer_10",
+			"memory_tier": 10
 		},
 		{
-			"folder_name": "subpack_4",
-			"name": "Parrot",
-			"memory_tier": 4
+			"folder_name": "subpack_9",
+			"name": "Layer_9",
+			"memory_tier": 9
+		},
+		{
+			"folder_name": "subpack_8",
+			"name": "Layer_8",
+			"memory_tier": 8
+		},
+		{
+			"folder_name": "subpack_7",
+			"name": "Layer_7",
+			"memory_tier": 7
+		},
+		{
+			"folder_name": "subpack_6",
+			"name": "Layer_6",
+			"memory_tier": 6
 		},
 		{
 			"folder_name": "subpack_5",
-			"name": "Wolf",
+			"name": "Layer_5",
 			"memory_tier": 5
+		},
+		{
+			"folder_name": "subpack_4",
+			"name": "Layer_4",
+			"memory_tier": 4
+		},
+		{
+			"folder_name": "subpack_3",
+			"name": "Layer_3",
+			"memory_tier": 3
+		},
+		{
+			"folder_name": "subpack_2",
+			"name": "Layer_2",
+			"memory_tier": 2
+		},
+		{
+			"folder_name": "subpack_1",
+			"name": "Layer_1",
+			"memory_tier": 1
+		},
+		{
+			"folder_name": "subpack_0",
+			"name": "Layer_0",
+			"memory_tier": 0
+		},
+		{
+			"folder_name": "subpack_13",
+			"name": "layer_cycled_while_sitting",
+			"memory_tier": 13
 		}
 	]
 }

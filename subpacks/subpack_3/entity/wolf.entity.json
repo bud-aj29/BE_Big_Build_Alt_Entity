@@ -36,7 +36,7 @@
       },
       "scripts": {
         "initialize": [
-          "variable.armor_stand.pose_index = 5;"
+          "variable.armor_stand.pose_index = 3;"
         ],
         "pre_animation": [
           "variable.body_shake_angle = 0.05 * query.frame_alpha + query.shake_angle;", //vanilla
@@ -49,7 +49,7 @@
           "variable.head_roll_progress = Math.clamp(variable.body_shake_angle / 1.8, 0, 1);", //vanilla
           "variable.head_rot_z = (Math.sin(variable.head_roll_progress * 180) * Math.sin(variable.head_roll_progress * 1980) * 27) - variable.body_rot_z;", //vanilla
 	  
-	  "variable.armor_stand.pose_index = 5;"
+	  "variable.armor_stand.pose_index = 3;"
         ],
         "animate": [
           "wolf_setup.c", //vanilla moved from AC
